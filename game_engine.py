@@ -18,3 +18,8 @@ class OthelloGame:
     def is_valid_move(self, board, player, row, col):
         if board[row, col] != EMPTY:
             return False
+        opponent = self.get_opponent(player)
+        for dr, dc in DIRECTIONS:
+            r, c = row + dr, col + dc
+            if 0 <= r < 8 and 0 <= c < 8 and board[r, c] == opponent:
+                while 0 <= r < 8 and 0 <= c < 8:
