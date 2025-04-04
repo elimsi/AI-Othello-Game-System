@@ -13,3 +13,8 @@ class OthelloGame:
         self.current_player = BLACK
 
     def get_opponent(self, player):
+        return BLACK if player == WHITE else WHITE
+
+    def is_valid_move(self, board, player, row, col):
+        if board[row, col] != EMPTY:
+            return False
