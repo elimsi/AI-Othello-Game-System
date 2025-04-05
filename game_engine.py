@@ -23,3 +23,8 @@ class OthelloGame:
             r, c = row + dr, col + dc
             if 0 <= r < 8 and 0 <= c < 8 and board[r, c] == opponent:
                 while 0 <= r < 8 and 0 <= c < 8:
+                    r += dr
+                    c += dc
+                    if r < 0 or r >= 8 or c < 0 or c >= 8 or board[r, c] == EMPTY:
+                        break
+                    if board[r, c] == player:
