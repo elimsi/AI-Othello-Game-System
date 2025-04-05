@@ -38,3 +38,8 @@ class OthelloGame:
                 if self.is_valid_move(board, player, row, col):
                     valid_moves.append((row, col))
         return valid_moves
+
+    def apply_move(self, board, player, row, col):
+        new_board = board.copy()
+        new_board[row, col] = player
+        opponent = self.get_opponent(player)
