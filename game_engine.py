@@ -28,3 +28,8 @@ class OthelloGame:
                     if r < 0 or r >= 8 or c < 0 or c >= 8 or board[r, c] == EMPTY:
                         break
                     if board[r, c] == player:
+                        return True
+        return False
+
+    def get_valid_moves(self, board, player):
+        valid_moves = []
