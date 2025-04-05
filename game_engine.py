@@ -43,3 +43,8 @@ class OthelloGame:
         new_board = board.copy()
         new_board[row, col] = player
         opponent = self.get_opponent(player)
+        for dr, dc in DIRECTIONS:
+            r, c = row + dr, col + dc
+            capture_positions = []
+            while 0 <= r < 8 and 0 <= c < 8 and new_board[r, c] == opponent:
+                capture_positions.append((r, c))
