@@ -53,3 +53,8 @@ class OthelloGame:
             if 0 <= r < 8 and 0 <= c < 8 and new_board[r, c] == player:
                 for rr, cc in capture_positions:
                     new_board[rr, cc] = player
+        return new_board
+
+    def play_move(self, row, col):
+        if self.is_valid_move(self.board, self.current_player, row, col):
+            self.board = self.apply_move(self.board, self.current_player, row, col)
