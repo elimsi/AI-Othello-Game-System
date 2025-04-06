@@ -58,3 +58,6 @@ class OthelloGame:
     def play_move(self, row, col):
         if self.is_valid_move(self.board, self.current_player, row, col):
             self.board = self.apply_move(self.board, self.current_player, row, col)
+            self.current_player = self.get_opponent(self.current_player)
+            return True
+        return False
