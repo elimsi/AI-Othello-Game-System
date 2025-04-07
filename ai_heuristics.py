@@ -28,3 +28,13 @@ def slightlyLessDumbScore(array, player):
 
             if array[x][y] == colour:
                 score += add
+            elif array[x][y] == opponent:
+                score -= add
+    return score
+
+def decentHeuristic(array, player):
+    score = 0
+    cornerVal = 25
+    adjacentVal = 5
+    sideVal = 5
+
