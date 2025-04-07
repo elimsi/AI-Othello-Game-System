@@ -48,3 +48,13 @@ def decentHeuristic(array, player):
             # Corner adjacent penalties
             if (x == 0 and y == 1) or (x == 1 and 0 <= y <= 1):
                 if array[0][0] == colour:
+                    add = sideVal
+                else:
+                    add = -adjacentVal
+            elif (x == 0 and y == 6) or (x == 1 and 6 <= y <= 7):
+                if array[0][7] == colour:
+                    add = sideVal
+                else:
+                    add = -adjacentVal
+            elif (x == 7 and y == 1) or (x == 6 and 0 <= y <= 1):
+                if array[7][0] == colour:
