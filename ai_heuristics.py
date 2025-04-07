@@ -38,3 +38,13 @@ def decentHeuristic(array, player):
     adjacentVal = 5
     sideVal = 5
 
+    colour = player
+    opponent = 1 if player == 2 else 2
+
+    for x in range(8):
+        for y in range(8):
+            add = 1
+            
+            # Corner adjacent penalties
+            if (x == 0 and y == 1) or (x == 1 and 0 <= y <= 1):
+                if array[0][0] == colour:
