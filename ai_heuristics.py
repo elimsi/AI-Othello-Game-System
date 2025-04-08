@@ -78,3 +78,13 @@ def decentHeuristic(array, player):
             if array[x][y] == colour:
                 score += add
             elif array[x][y] == opponent:
+                score -= add
+
+    return score
+
+def get_mobility(board, player):
+    opponent = 1 if player == 2 else 2
+    directions = [(-1, 0), (1, 0), (0, -1), (0, 1), (-1, -1), (-1, 1), (1, -1), (1, 1)]
+    valid_count = 0
+    for row in range(8):
+        for col in range(8):
