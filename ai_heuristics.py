@@ -68,3 +68,13 @@ def decentHeuristic(array, player):
                     add = -adjacentVal
                     
             # Edge tiles
+            elif (x == 0 and 1 < y < 6) or (x == 7 and 1 < y < 6) or (y == 0 and 1 < x < 6) or (y == 7 and 1 < x < 6):
+                add = sideVal
+                
+            # Corner tiles
+            elif (x == 0 and y == 0) or (x == 0 and y == 7) or (x == 7 and y == 0) or (x == 7 and y == 7):
+                add = cornerVal
+
+            if array[x][y] == colour:
+                score += add
+            elif array[x][y] == opponent:
