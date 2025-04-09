@@ -108,3 +108,13 @@ def get_mobility(board, player):
 
 def finalHeuristic(array, player):
     # Determine the current move number by counting pieces on board
+    # Game starts with 4 pieces
+    pieces_count = np.count_nonzero(array)
+    moves = pieces_count - 4
+
+    if moves <= 8:
+        numMoves = get_mobility(array, player)
+        return numMoves + decentHeuristic(array, player)
+    elif moves <= 52:
+        return decentHeuristic(array, player)
+    elif moves <= 58:
