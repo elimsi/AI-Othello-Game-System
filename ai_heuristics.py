@@ -98,3 +98,13 @@ def get_mobility(board, player):
                         c += dc
                         if r < 0 or r >= 8 or c < 0 or c >= 8 or board[r][c] == 0:
                             break
+                        if board[r][c] == player:
+                            valid = True
+                            break
+                    if valid: break
+            if valid:
+                valid_count += 1
+    return valid_count
+
+def finalHeuristic(array, player):
+    # Determine the current move number by counting pieces on board
