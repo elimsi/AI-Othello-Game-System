@@ -118,3 +118,6 @@ def finalHeuristic(array, player):
     elif moves <= 52:
         return decentHeuristic(array, player)
     elif moves <= 58:
+        return slightlyLessDumbScore(array, player)
+    else:
+        return dumbScore(array, player)
