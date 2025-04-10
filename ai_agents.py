@@ -25,3 +25,12 @@ class HeuristicAI(AIAgent):
         best_move = None
         for r, c in moves:
             new_board = game_state.apply_move(game_state.board, self.color, r, c)
+            score = slightlyLessDumbScore(new_board, self.color)
+            if score > best_score:
+                best_score = score
+                best_move = (r, c)
+        return best_move
+
+class MinimaxAI(AIAgent):
+    def __init__(self, color, depth=4):
+        super().__init__(color)
