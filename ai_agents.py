@@ -34,3 +34,12 @@ class HeuristicAI(AIAgent):
 class MinimaxAI(AIAgent):
     def __init__(self, color, depth=4):
         super().__init__(color)
+        self.depth = depth
+        self.nodes_explored = 0
+
+    def get_move(self, game_state):
+        self.nodes_explored = 0
+        _, best_move = self.minimax(game_state, game_state.board, self.depth, self.color, True)
+        return best_move
+
+    def minimax(self, game_state, board, depth, player, is_maximizing):
