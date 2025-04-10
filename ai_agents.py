@@ -43,3 +43,12 @@ class MinimaxAI(AIAgent):
         return best_move
 
     def minimax(self, game_state, board, depth, player, is_maximizing):
+        self.nodes_explored += 1
+        valid_moves = game_state.get_valid_moves(board, player)
+        if depth == 0 or not valid_moves:
+            return finalHeuristic(board, self.color), None
+
+        opponent = BLACK if player == WHITE else WHITE
+        if is_maximizing:
+            max_eval = float('-inf')
+            best_move = None
