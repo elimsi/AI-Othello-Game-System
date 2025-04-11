@@ -88,3 +88,12 @@ class AlphaBetaAI(AIAgent):
             return finalHeuristic(board, self.color), None
 
         opponent = BLACK if player == WHITE else WHITE
+        if is_maximizing:
+            max_eval = float('-inf')
+            best_move = None
+            for move in valid_moves:
+                new_board = game_state.apply_move(board, player, move[0], move[1])
+                eval_score, _ = self.alphabeta(game_state, new_board, depth - 1, opponent, False, alpha, beta)
+                if eval_score > max_eval:
+                    max_eval = eval_score
+                    best_move = move
