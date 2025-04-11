@@ -79,3 +79,12 @@ class AlphaBetaAI(AIAgent):
     def get_move(self, game_state):
         self.nodes_explored = 0
         _, best_move = self.alphabeta(game_state, game_state.board, self.depth, self.color, True, float('-inf'), float('inf'))
+        return best_move
+
+    def alphabeta(self, game_state, board, depth, player, is_maximizing, alpha, beta):
+        self.nodes_explored += 1
+        valid_moves = game_state.get_valid_moves(board, player)
+        if depth == 0 or not valid_moves:
+            return finalHeuristic(board, self.color), None
+
+        opponent = BLACK if player == WHITE else WHITE
