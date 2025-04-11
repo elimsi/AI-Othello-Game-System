@@ -61,3 +61,12 @@ class MinimaxAI(AIAgent):
             return max_eval, best_move
         else:
             min_eval = float('inf')
+            best_move = None
+            for move in valid_moves:
+                new_board = game_state.apply_move(board, player, move[0], move[1])
+                eval_score, _ = self.minimax(game_state, new_board, depth - 1, opponent, True)
+                if eval_score < min_eval:
+                    min_eval = eval_score
+                    best_move = move
+            return min_eval, best_move
+
