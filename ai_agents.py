@@ -70,3 +70,12 @@ class MinimaxAI(AIAgent):
                     best_move = move
             return min_eval, best_move
 
+class AlphaBetaAI(AIAgent):
+    def __init__(self, color, depth=4):
+        super().__init__(color)
+        self.depth = depth
+        self.nodes_explored = 0
+
+    def get_move(self, game_state):
+        self.nodes_explored = 0
+        _, best_move = self.alphabeta(game_state, game_state.board, self.depth, self.color, True, float('-inf'), float('inf'))
