@@ -106,3 +106,11 @@ class AlphaBetaAI(AIAgent):
             best_move = None
             for move in valid_moves:
                 new_board = game_state.apply_move(board, player, move[0], move[1])
+                eval_score, _ = self.alphabeta(game_state, new_board, depth - 1, opponent, True, alpha, beta)
+                if eval_score < min_eval:
+                    min_eval = eval_score
+                    best_move = move
+                beta = min(beta, eval_score)
+                if beta <= alpha:
+                    break
+            return min_eval, best_move
