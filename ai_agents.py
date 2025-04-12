@@ -97,3 +97,12 @@ class AlphaBetaAI(AIAgent):
                 if eval_score > max_eval:
                     max_eval = eval_score
                     best_move = move
+                alpha = max(alpha, eval_score)
+                if beta <= alpha:
+                    break
+            return max_eval, best_move
+        else:
+            min_eval = float('inf')
+            best_move = None
+            for move in valid_moves:
+                new_board = game_state.apply_move(board, player, move[0], move[1])
