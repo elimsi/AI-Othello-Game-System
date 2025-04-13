@@ -24,3 +24,16 @@ class MainGUI:
         
         self.ai_var = tk.StringVar(value="IA Alpha-Beta")
         options = ["IA Stupide", "IA Moins Stupide", "IA Minimax", "IA Alpha-Beta"]
+        self.ai_dropdown = tk.OptionMenu(header_frame, self.ai_var, *options, command=self.set_ai)
+        self.ai_dropdown.config(bg="#34495e", fg="white", font=("Arial", 10))
+        self.ai_dropdown.pack(side=tk.LEFT, padx=10)
+
+        restart_btn = tk.Button(header_frame, text="Restart Game", command=self.restart_game, bg="#e74c3c", fg="white", font=("Arial", 10, "bold"))
+        restart_btn.pack(side=tk.RIGHT, padx=15)
+
+        # Canvas for the Board
+        self.canvas = tk.Canvas(self.master, width=400, height=400, bg="#27ae60", highlightthickness=0)
+        self.canvas.pack(pady=10)
+        self.canvas.bind("<Button-1>", self.handle_click)
+
+        # Stats Frame (HUD)
