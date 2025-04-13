@@ -37,3 +37,16 @@ class MainGUI:
         self.canvas.bind("<Button-1>", self.handle_click)
 
         # Stats Frame (HUD)
+        stats_frame = tk.Frame(self.master, bg="#34495e", bd=2, relief=tk.GROOVE)
+        stats_frame.pack(side=tk.BOTTOM, fill=tk.X, padx=20, pady=20)
+
+        # Left Column for HUD
+        left_stats = tk.Frame(stats_frame, bg="#34495e")
+        left_stats.pack(side=tk.LEFT, padx=10, pady=10)
+        
+        self.time_label = tk.Label(left_stats, text="⏱️ AI Time: 0 ms", bg="#34495e", fg="#f1c40f", font=("Arial", 11, "bold"))
+        self.time_label.pack(anchor="w")
+        
+        self.nodes_label = tk.Label(left_stats, text="🌳 Nodes Explored: 0", bg="#34495e", fg="#ecf0f1", font=("Arial", 11))
+        self.nodes_label.pack(anchor="w")
+
