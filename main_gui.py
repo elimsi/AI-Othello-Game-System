@@ -76,3 +76,16 @@ class MainGUI:
         self.time_label.config(text="⏱️ AI Time: 0 ms")
         self.nodes_label.config(text="🌳 Nodes Explored: 0")
         self.draw_board()
+
+    def draw_board(self):
+        self.canvas.delete("all")
+        for row in range(8):
+            for col in range(8):
+                x1, y1 = col * 50, row * 50
+                x2, y2 = x1 + 50, y1 + 50
+                self.canvas.create_rectangle(x1, y1, x2, y2, outline="#2c3e50", width=2)
+                
+                piece = self.game.board[row, col]
+                if piece == BLACK:
+                    self.canvas.create_oval(x1 + 5, y1 + 5, x2 - 5, y2 - 5, fill="#111", outline="#000")
+                elif piece == WHITE:
