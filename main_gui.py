@@ -50,3 +50,16 @@ class MainGUI:
         self.nodes_label = tk.Label(left_stats, text="🌳 Nodes Explored: 0", bg="#34495e", fg="#ecf0f1", font=("Arial", 11))
         self.nodes_label.pack(anchor="w")
 
+        # Right Column for HUD
+        right_stats = tk.Frame(stats_frame, bg="#34495e")
+        right_stats.pack(side=tk.RIGHT, padx=10, pady=10)
+
+        self.score_label = tk.Label(right_stats, text="📊 Board Score: 0", bg="#34495e", fg="#3498db", font=("Arial", 11, "bold"))
+        self.score_label.pack(anchor="e")
+
+        self.status_label = tk.Label(right_stats, text="Your Turn (Black)", bg="#34495e", fg="#2ecc71", font=("Arial", 11, "bold"))
+        self.status_label.pack(anchor="e")
+
+        self.set_ai()
+        self.draw_board()
+
