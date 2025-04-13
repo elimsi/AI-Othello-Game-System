@@ -63,3 +63,16 @@ class MainGUI:
         self.set_ai()
         self.draw_board()
 
+    def set_ai(self, *args):
+        choice = self.ai_var.get()
+        if choice == "IA Stupide": self.ai = RandomAI(WHITE)
+        elif choice == "IA Moins Stupide": self.ai = HeuristicAI(WHITE)
+        elif choice == "IA Minimax": self.ai = MinimaxAI(WHITE, depth=4)
+        elif choice == "IA Alpha-Beta": self.ai = AlphaBetaAI(WHITE, depth=4)
+
+    def restart_game(self):
+        self.game = OthelloGame()
+        self.status_label.config(text="Your Turn (Black)", fg="#2ecc71")
+        self.time_label.config(text="⏱️ AI Time: 0 ms")
+        self.nodes_label.config(text="🌳 Nodes Explored: 0")
+        self.draw_board()
