@@ -128,3 +128,16 @@ class MainGUI:
         if move:
             self.game.play_move(move[0], move[1])
             self.time_label.config(text=f"⏱️ AI Time: {elapsed_ms} ms")
+            
+            nodes = getattr(self.ai, 'nodes_explored', 0)
+            self.nodes_label.config(text=f"🌳 Nodes Explored: {nodes}")
+            
+            if self.game.get_valid_moves(self.game.board, BLACK):
+                self.status_label.config(text="Your Turn (Black)", fg="#2ecc71")
+            else:
+                if self.game.get_valid_moves(self.game.board, WHITE):
+                    self.game.current_player = WHITE # Black skips
+                    self.status_label.config(text="Black skipped. AI Turn", fg="#e67e22")
+                    self.master.after(500, self.ai_move)
+                else:
+                    self.end_game()
