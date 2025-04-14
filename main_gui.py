@@ -141,3 +141,27 @@ class MainGUI:
                     self.master.after(500, self.ai_move)
                 else:
                     self.end_game()
+            
+            self.draw_board()
+            
+    def end_game(self):
+        black_score = np.sum(self.game.board == BLACK)
+        white_score = np.sum(self.game.board == WHITE)
+        
+        if black_score > white_score:
+            msg = "You Win! 🎉"
+            color = "#2ecc71"
+        elif white_score > black_score:
+            msg = "AI Wins! 🤖"
+            color = "#e74c3c"
+        else:
+            msg = "It's a Draw! 🤝"
+            color = "#f1c40f"
+            
+        self.status_label.config(text=msg, fg=color)
+        print(f"Game Over! Black: {black_score}, White: {white_score}")
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = MainGUI(root)
+    root.mainloop()
