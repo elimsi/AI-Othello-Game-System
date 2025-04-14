@@ -89,3 +89,16 @@ class MainGUI:
                 if piece == BLACK:
                     self.canvas.create_oval(x1 + 5, y1 + 5, x2 - 5, y2 - 5, fill="#111", outline="#000")
                 elif piece == WHITE:
+                    self.canvas.create_oval(x1 + 5, y1 + 5, x2 - 5, y2 - 5, fill="#eee", outline="#ccc")
+        
+        # Highlight valid moves for current player
+        if self.game.current_player == BLACK:
+            moves = self.game.get_valid_moves(self.game.board, BLACK)
+            for r, c in moves:
+                x1, y1 = c * 50, r * 50
+                x2, y2 = x1 + 50, y1 + 50
+                self.canvas.create_oval(x1 + 20, y1 + 20, x2 - 20, y2 - 20, fill="#2ecc71", outline="")
+
+        score = finalHeuristic(self.game.board, WHITE)
+        self.score_label.config(text=f"📊 Board Score: {score}")
+        self.master.update()
