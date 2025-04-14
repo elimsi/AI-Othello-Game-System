@@ -115,3 +115,16 @@ class MainGUI:
                     self.master.after(50, self.ai_move)
                 elif self.game.get_valid_moves(self.game.board, BLACK):
                     self.game.current_player = BLACK # White skips
+                    self.status_label.config(text="White skipped. Your Turn", fg="#2ecc71")
+                    self.draw_board()
+                else:
+                    self.end_game()
+
+    def ai_move(self):
+        start_time = time.time()
+        move = self.ai.get_move(self.game)
+        elapsed_ms = int((time.time() - start_time) * 1000)
+        
+        if move:
+            self.game.play_move(move[0], move[1])
+            self.time_label.config(text=f"⏱️ AI Time: {elapsed_ms} ms")
