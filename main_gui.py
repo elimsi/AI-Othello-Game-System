@@ -102,3 +102,16 @@ class MainGUI:
         score = finalHeuristic(self.game.board, WHITE)
         self.score_label.config(text=f"📊 Board Score: {score}")
         self.master.update()
+
+    def handle_click(self, event):
+        if self.game.current_player == BLACK:
+            col = event.x // 50
+            row = event.y // 50
+            if self.game.play_move(row, col):
+                self.status_label.config(text="AI is thinking...", fg="#e67e22")
+                self.draw_board()
+                
+                if self.game.get_valid_moves(self.game.board, WHITE):
+                    self.master.after(50, self.ai_move)
+                elif self.game.get_valid_moves(self.game.board, BLACK):
+                    self.game.current_player = BLACK # White skips
