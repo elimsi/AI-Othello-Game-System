@@ -23,7 +23,7 @@ class MainGUI:
         tk.Label(header_frame, text="IA Opponent:", bg="#2c3e50", fg="white", font=("Arial", 12, "bold")).pack(side=tk.LEFT, padx=10)
         
         self.ai_var = tk.StringVar(value="IA Alpha-Beta")
-        options = ["IA Stupide", "IA Moins Stupide", "IA Minimax", "IA Alpha-Beta"]
+        options = ["Random AI", "Greedy AI", "IA Minimax", "IA Alpha-Beta"]
         self.ai_dropdown = tk.OptionMenu(header_frame, self.ai_var, *options, command=self.set_ai)
         self.ai_dropdown.config(bg="#34495e", fg="white", font=("Arial", 10))
         self.ai_dropdown.pack(side=tk.LEFT, padx=10)
@@ -65,8 +65,8 @@ class MainGUI:
 
     def set_ai(self, *args):
         choice = self.ai_var.get()
-        if choice == "IA Stupide": self.ai = RandomAI(WHITE)
-        elif choice == "IA Moins Stupide": self.ai = HeuristicAI(WHITE)
+        if choice == "Random AI": self.ai = RandomAI(WHITE)
+        elif choice == "Greedy AI": self.ai = HeuristicAI(WHITE)
         elif choice == "IA Minimax": self.ai = MinimaxAI(WHITE, depth=4)
         elif choice == "IA Alpha-Beta": self.ai = AlphaBetaAI(WHITE, depth=4)
 
