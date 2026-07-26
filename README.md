@@ -1,6 +1,6 @@
-# 🧠 AI Othello Game System (TIPE)
+# 🧠 AI Othello Game System
 
-A modular, Python-based testbed for analyzing and comparing Artificial Intelligence strategies in the game of Othello (Reversi). Developed as part of a TIPE (Travail d'Initiative Personnelle Encadré) research project.
+A modular, Python-based testbed for analyzing and comparing Artificial Intelligence strategies in the game of Othello (Reversi). Developed as an independent research project.
 
 ## 🎯 Project Goals
 This project was built to practically demonstrate the mathematical efficiency and decision-making capabilities of different AI search algorithms. It allows users to play against various AIs and observe their performance metrics in real-time.

@@ -8,7 +8,7 @@ from ai_heuristics import finalHeuristic
 class MainGUI:
     def __init__(self, master):
         self.master = master
-        self.master.title("Othello AI Simulator (TIPE)")
+        self.master.title("Othello AI Simulator")
         self.master.geometry("500x600")
         self.master.configure(bg="#2c3e50")
         self.game = OthelloGame()
